@@ -3,17 +3,21 @@ package net.dinastiafoca.vikinggame.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import net.dinastiafoca.vikinggame.world.Village;
+
+import static net.dinastiafoca.vikinggame.VikingGame.SCREEN_HEIGHT;
+import static net.dinastiafoca.vikinggame.VikingGame.SCREEN_WIDTH;
 
 public class VillageScreen extends ScreenAdapter  {
-    private SpriteBatch batch;
-    private Texture img;
+
+    private OrthographicCamera camera;
+    private Village village;
 
     @Override
     public void show () {
-        batch = new SpriteBatch();
-        img = new Texture("dinastia.png");
+        camera = new OrthographicCamera(SCREEN_WIDTH, SCREEN_HEIGHT);
+        village = new Village(camera, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
     @Override
@@ -21,14 +25,11 @@ public class VillageScreen extends ScreenAdapter  {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        batch.begin();
-        batch.draw(img, 0, 0);
-        batch.end();
+        village.update(delta);
     }
 
     @Override
     public void dispose () {
-        batch.dispose();
-        img.dispose();
+        village.dispose();
     }
 }
