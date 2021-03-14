@@ -5,8 +5,8 @@ import net.dinastiafoca.vikinggame.screens.VillageScreen;
 
 public class VikingGame extends Game {
 	public static final String SCREEN_TITLE = "Viking Game (dev)";
-	public static final int SCREEN_WIDTH = 480;
-	public static final int SCREEN_HEIGHT = 360;
+	public static final int SCREEN_WIDTH = 640;
+	public static final int SCREEN_HEIGHT = 480;
 
 	@Override
 	public void create() {
